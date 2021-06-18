@@ -1,0 +1,231 @@
+$background: #329bff;
+$background-secondary: white;
+$background-dark: #f9f9f9;
+$color-primary: #444;
+$color-secondary: #999;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+  background: $background;
+
+}
+
+#__next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.app {
+  margin: 15px;
+  max-width: 1000px;
+  width: 75vw;
+  background: $background-secondary;
+  border-radius: 25px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+
+}
+.date{
+  color: $color-secondary;
+  font-size: 18px;
+  margin-bottom: 7px;
+}
+.today .cityInfoWrapper {
+  display: grid;
+  grid-template-columns: 200px calc(100% - 200px);
+
+  img {
+    width: 100%;
+  }
+
+  .cityInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+    .cityName {
+      font-size: 40px;
+      font-weight: bold;
+      color: $color-primary;
+    }
+
+    .todayForecast {
+      font-size: 20px;
+      color: $color-primary;
+      margin-left: 2px;
+    }
+
+    .weatherDetailsWrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-right: 30px;
+
+      .weatherDetails {
+        width: 100%;
+        font-size: 18px;
+        color: $color-secondary;
+      }
+    }
+
+  }
+
+}
+
+.cardGroup {
+  padding: 20px;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(4, calc(25% - 15px));
+
+  .card {
+    background: $background-dark;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 15px;
+    border-radius: 20px;
+
+    .weatherType {
+      font-size: 18px;
+    }
+
+    .cardWind, .cardPressure {
+      font-size: 15px;
+      color: $color-secondary;
+    }
+  }
+}
+
+.searchWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+
+  .search {
+    user-select: none;
+    outline: 0;
+    padding: 10px;
+    background: $background-dark;
+    border-radius: 7px;
+
+    input {
+      font-size: 15px;
+      background: none;
+      border: none;
+      outline: 0;
+      color: $color-primary;
+    }
+
+    button {
+      outline: 0;
+      cursor: pointer;
+      border: none;
+      height: 43px;
+      padding: 10px;
+      background: $background;
+      border-radius: 7px;
+      color: white;
+    }
+  }
+
+}
+
+.api {
+  margin: 20px;
+
+  a {
+    text-decoration: none;
+    color: $color-primary;
+  }
+}
+
+.error {
+  background: #ff003b;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  border-radius: 7px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, .5);
+  animation: displayError 4s;
+  transform: translateY(calc(-100% - 20px));
+}
+
+@keyframes displayError {
+  0% {
+    transform: translateY(calc(-100% - 20px));
+  }
+  5% {
+    transform: translateY(0);
+  }
+  95% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(-100% - 20px));
+
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .cardGroup {
+    grid-template-columns: repeat(2, calc(50% - 15px));
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .today {
+    .cityInfoWrapper {
+
+      .cityInfo {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        .todayForecast{
+          margin: unset;
+        }
+        .weatherDetailsWrapper{
+          margin: unset;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 900px) {
+
+  .cardGroup {
+    grid-template-columns: 100%;
+  }
+  .today {
+    .cityInfoWrapper {
+      grid-template-columns: 100%;
+      img{
+        max-width: 250px;
+        justify-self: center;
+      }
+      .cityInfo{
+        align-items: center;
+        text-align: center;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 400px) {
+.app{
+  width: 100%;
+}
+
+}
